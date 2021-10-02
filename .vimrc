@@ -2,12 +2,14 @@
 call plug#begin('~/.vim/plugged')
   Plug 'preservim/nerdtree'
   Plug 'morhetz/gruvbox'
+  Plug 'joshdick/onedark.vim'
+  Plug 'itchyny/lightline.vim'
 "  Plug 'jremmen/vim-ripgrep'
 "  Plug 'tpope/vim-fugitive'
 "  Plug 'leafgarland/typescript-vim'
 "  Plug 'vim-utils/vim-man'
 "  Plug 'ctrlpvim/ctrlp.vim'
-"  Plug 'ycm-core/YouCompleteMe'
+  Plug 'ycm-core/YouCompleteMe'
 "  Plug 'mbbill/undotree'
 call plug#end()
 " }}}
@@ -19,6 +21,7 @@ call plug#end()
     nnoremap <leader>j <C-w>j<CR>
     nnoremap <leader>k <C-w>k<CR>
     nnoremap <leader>l <C-w>l<CR>
+    nnoremap <leader>t  
     nnoremap <leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
     nnoremap <leader>ps :Rg<SPACE>
     nnoremap <silent> <Leader>gd :YcmCompleter GoTo<CR>
@@ -37,6 +40,10 @@ augroup END
 if executable('rg')
     let g:rg_derive_root='true'
 endif
+
+let g:lightline = {
+            \ 'colorscheme': 'onedark',
+            \ }
 
 set path=$PWD/**
 set number
@@ -64,7 +71,7 @@ set undofile
 " Colors
 set background=dark
 set t_Co=256
-colorscheme gruvbox
+colorscheme onedark
 " Misc.
 set showmatch
 set cursorline
@@ -77,6 +84,7 @@ set scrolloff=10
 set showcmd
 set showmode
 set history=50
+let g:airline_theme='onedark'
 " }}}
 
 " STATUS LINE ------------------------------------------------------------ {{{
