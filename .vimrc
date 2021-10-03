@@ -4,11 +4,12 @@ call plug#begin('~/.vim/plugged')
   Plug 'morhetz/gruvbox'
   Plug 'joshdick/onedark.vim'
   Plug 'itchyny/lightline.vim'
-"  Plug 'jremmen/vim-ripgrep'
-"  Plug 'tpope/vim-fugitive'
-"  Plug 'leafgarland/typescript-vim'
+  Plug 'jremmen/vim-ripgrep'
+  Plug 'tpope/vim-fugitive'
+" Plug 'leafgarland/typescript-vim'
 "  Plug 'vim-utils/vim-man'
-"  Plug 'ctrlpvim/ctrlp.vim'
+  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+  Plug 'junegunn/fzf.vim'
   Plug 'ycm-core/YouCompleteMe'
 "  Plug 'mbbill/undotree'
 call plug#end()
@@ -21,12 +22,13 @@ call plug#end()
     nnoremap <leader>j <C-w>j<CR>
     nnoremap <leader>k <C-w>k<CR>
     nnoremap <leader>l <C-w>l<CR>
-    nnoremap <leader>t  
-    nnoremap <leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
-    nnoremap <leader>ps :Rg<SPACE>
-    nnoremap <silent> <Leader>gd :YcmCompleter GoTo<CR>
-    nnoremap <silent> <Leader>gf: YcmCompleter FixIt<CR>
-    nnoremap Y y$
+    nnoremap <leader>t  :NERDTreeToggle<CR>
+    nnoremap <Leader>gd :YcmCompleter GoTo<CR>
+    nnoremap <leader>gs :G<CR>
+    nnoremap <C-p> :Files<CR>
+    nnoremap <C-g> :GFiles<CR>
+    nnoremap <C-o> :Buffers<CR>
+    nnoremap <C-f> :Rg  
 " }}}
 
 " VIMSCRIPT -------------------------------------------------------------- {{{
@@ -46,7 +48,7 @@ let g:lightline = {
             \ }
 
 set path=$PWD/**
-set number
+set number relativenumber
 set nowrap
 syntax on
 " Indents
@@ -71,7 +73,7 @@ set undofile
 " Colors
 set background=dark
 set t_Co=256
-colorscheme onedark
+colorscheme gruvbox
 " Misc.
 set showmatch
 set cursorline
